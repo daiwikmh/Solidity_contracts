@@ -2,5 +2,15 @@
 pragma solidity 0.8.26;
 
 contract Calculator {
-    function calci()
+    function add(uint a, uint b) public pure returns(uint){
+        uint c = a+b;
+        require(c >= a, "variable overflow");
+        return c;
+    }
+
+    function subtract(uint a, uint b) public pure returns(uint){
+        require(b <= a,"variable underflow");
+        uint c = a-b;
+        return c;
+    }
 }
