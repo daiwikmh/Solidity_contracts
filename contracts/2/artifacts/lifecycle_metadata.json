@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "months",
+						"type": "uint256"
+					}
+				],
+				"name": "getstage",
+				"outputs": [
+					{
+						"internalType": "enum lifecycle.Stage",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/2/lifecycle.sol": "lifecycle"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/2/lifecycle.sol": {
+			"keccak256": "0x24a9230e08ea7b2de4d6c4353a4b34cc0a9215c0dc253c08559c3f3bcfa213b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://65baa6cfee215674373c2d826edf2df147932d8952c1b75fe8ef232155cd0be6",
+				"dweb:/ipfs/QmcngiiCJa5fXsYvWGe8AGbkf1aeEvZAVNri5i9M5qHnjQ"
+			]
+		}
+	},
+	"version": 1
+}
