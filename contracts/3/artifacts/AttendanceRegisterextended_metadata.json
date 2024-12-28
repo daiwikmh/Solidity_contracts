@@ -1,0 +1,180 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "class",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "joiningdate",
+						"type": "uint256"
+					}
+				],
+				"name": "Added",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "class",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "joiningdate",
+						"type": "uint256"
+					}
+				],
+				"name": "add",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "rollnumber",
+						"type": "uint256"
+					}
+				],
+				"name": "getstudentbyroll",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "class",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "joiningdate",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct AttendanceRegister.Student",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "registered",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "class",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "joiningdate",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "teacher",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/3/AttendanceRegister.sol": "AttendanceRegisterextended"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/2/attendanceregister.sol": {
+			"keccak256": "0x7bd4847e9cfa5243b36d756e9a664b635f1004421b11c04b49824e15cdbc7a81",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://60d631e64e2d27693e9f5488fa56287ad04055c141e8c2ca70a2ab93b8bb2c47",
+				"dweb:/ipfs/QmQqujuLh37aEQJs8yM3aa8kK5KpXmvQRikUWLr8trcGYw"
+			]
+		},
+		"contracts/3/AttendanceRegister.sol": {
+			"keccak256": "0xa2a63e9af8f09a5fadab11558dc5f8c95927e65f82219af7d518b8dae2c5f0f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b9f7570e3e54a0775aec939e6dd6ca9dcaf99b4e58e1331fd53b21498cae6504",
+				"dweb:/ipfs/QmToMV3EnJdZU2DKhf75SB2ox1WwWMjoHMZCCCSU2N9BAW"
+			]
+		}
+	},
+	"version": 1
+}

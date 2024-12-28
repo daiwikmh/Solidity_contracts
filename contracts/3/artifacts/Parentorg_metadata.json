@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_department",
+						"type": "string"
+					}
+				],
+				"name": "enroll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/3/childOrgEnrollment.sol": "Parentorg"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/3/childOrgEnrollment.sol": {
+			"keccak256": "0xb76f3de68855bb7b2c947ead0a210fbe8cf5dc8dd6306afe0a22642bb903f829",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e0fd8d5e432afef451f33d5af5e1a37e1bb02b956160916b4dae04a32074b1d",
+				"dweb:/ipfs/Qma33aQqVrBLnwaiuLouo2TnRmb51RcMUU4Emkyy2KKuHj"
+			]
+		}
+	},
+	"version": 1
+}
