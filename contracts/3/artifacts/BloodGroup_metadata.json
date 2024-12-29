@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getBG",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/3/DetailsUsingInterface.sol": "BloodGroup"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/3/DetailsUsingInterface.sol": {
+			"keccak256": "0x87cfbac8ad415e0ccb72de74a5234e1a26629944759297ce61551f187fc1887f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://813c025e8a87b1bfdb7934a55c51a9db25774becee2973f69eeb978e1de2d7a5",
+				"dweb:/ipfs/QmUuF1751E4zpt9bPeYLSmCUgKjpfzrbkWN2nsyi8oFXEB"
+			]
+		}
+	},
+	"version": 1
+}
