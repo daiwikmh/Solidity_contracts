@@ -13,4 +13,10 @@ contract Calculator {
         uint c = a-b;
         return c;
     }
+
+    function divide(uint a, uint b)public pure returns(uint){
+        require(a > b,"variable underflow");
+        uint c = a/b;
+        return c;
+    }
 }
