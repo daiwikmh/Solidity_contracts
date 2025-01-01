@@ -19,4 +19,9 @@ contract Calculator {
         uint c = a/b;
         return c;
     }
+
+    function multiply(uint a, uint b)public pure returns(uint){
+        uint c = a*b;
+        return c;
+    }
 }
