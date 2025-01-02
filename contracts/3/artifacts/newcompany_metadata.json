@@ -57,11 +57,11 @@
 	},
 	"sources": {
 		"contracts/3/childOrgEnrollment.sol": {
-			"keccak256": "0xb76f3de68855bb7b2c947ead0a210fbe8cf5dc8dd6306afe0a22642bb903f829",
+			"keccak256": "0xf5d9b156457a6fd09b9d46a703316e15aa34e691ed00c7202141f614c7299c7b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6e0fd8d5e432afef451f33d5af5e1a37e1bb02b956160916b4dae04a32074b1d",
-				"dweb:/ipfs/Qma33aQqVrBLnwaiuLouo2TnRmb51RcMUU4Emkyy2KKuHj"
+				"bzz-raw://002d2e65c67d1fc05ec1101cadf61df1b7fa89bdf0c39d9c1940db28e1521603",
+				"dweb:/ipfs/Qmb8tZi7Jvpd9PV5KU7tnX2ntQm7Qz8PN6APPUYW44u6P3"
 			]
 		}
 	},

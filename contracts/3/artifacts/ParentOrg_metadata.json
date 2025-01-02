@@ -8,6 +8,35 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "details",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "department",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_name",
 						"type": "string"
@@ -42,7 +71,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/3/childOrgEnrollment.sol": "Parentorg"
+			"contracts/3/childOrgEnrollment.sol": "ParentOrg"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -57,11 +86,11 @@
 	},
 	"sources": {
 		"contracts/3/childOrgEnrollment.sol": {
-			"keccak256": "0xf5d9b156457a6fd09b9d46a703316e15aa34e691ed00c7202141f614c7299c7b",
+			"keccak256": "0x183267471726b8e4af558565e646a5488be7bf25dc9f9c84a316ee3138e0ff24",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://002d2e65c67d1fc05ec1101cadf61df1b7fa89bdf0c39d9c1940db28e1521603",
-				"dweb:/ipfs/Qmb8tZi7Jvpd9PV5KU7tnX2ntQm7Qz8PN6APPUYW44u6P3"
+				"bzz-raw://5c93fe5d8d93e1f97c720c7baeb46755826d8c130a05764448416f844d6eec3c",
+				"dweb:/ipfs/QmUDTziZ689PQy8XJrfZKCPcjmursfHRNSS9H17vsYKQyM"
 			]
 		}
 	},
