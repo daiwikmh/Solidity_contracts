@@ -1,8 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-contract deposit{
+contract depositContract{
     address owner;
     uint balances;
-    event getAmount
+
+
+    event Moneysent(address ContractAdd, uint amount);
+
+    constructor() payable{
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(owner == msg.sender,"only owner is required");
+        _;
+    }
+
+    function deposit() public payable{
+        balances += msg.value;
+        emit Moneysent(address(this), address(this).balance);
+    }
 }
