@@ -21,4 +21,12 @@ contract depositContract{
         balances += msg.value;
         emit Moneysent(address(this), address(this).balance);
     }
+
+        function getContractBalance() public view returns (uint) {
+        return address(this).balance;
+    }
+
+    function killContract() public onlyOwner {
+        selfdestruct(msg.sender);
+    }
 }
