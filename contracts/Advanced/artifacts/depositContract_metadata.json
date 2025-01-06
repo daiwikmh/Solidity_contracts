@@ -35,6 +35,26 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getContractBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "killContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -65,11 +85,11 @@
 	},
 	"sources": {
 		"contracts/Advanced/depositcontract.sol": {
-			"keccak256": "0x301162ab97ba9970ab9ab4fb28aa9a636b53131303abde27c91823f226c9f3f9",
+			"keccak256": "0x3a641032b322a1181c9fdb300f6cd39cb1ef542cfc37e08dbf4a7ccd61440975",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1774d4f0177d9505e2ae5e290f6d5a4dfa6949682bc659b41d6cb61174109198",
-				"dweb:/ipfs/QmQXxhHByP6cMRojqH4m9AYBLgff6Cac917VAf4i4xE5fE"
+				"bzz-raw://75b4cad0cd14f5c95ed08b3ac30e216574c7271be42ccc007bb67355adaabdf3",
+				"dweb:/ipfs/QmPzkg4wAy7pamf1KcHpaw2qd5wLKVCBy6NmWZL1q4PorN"
 			]
 		}
 	},
