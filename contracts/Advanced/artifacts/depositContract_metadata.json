@@ -48,13 +48,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "killContract",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -85,11 +78,11 @@
 	},
 	"sources": {
 		"contracts/Advanced/depositcontract.sol": {
-			"keccak256": "0x3a641032b322a1181c9fdb300f6cd39cb1ef542cfc37e08dbf4a7ccd61440975",
+			"keccak256": "0x98d81b06ade1dbef9d5ab0be25841729ff2837fc9922d980f3bd01ed249eddb3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://75b4cad0cd14f5c95ed08b3ac30e216574c7271be42ccc007bb67355adaabdf3",
-				"dweb:/ipfs/QmPzkg4wAy7pamf1KcHpaw2qd5wLKVCBy6NmWZL1q4PorN"
+				"bzz-raw://f067483a74621b211b3bdea2ac19d57740f4591ae8ea058f6350a0b45fbf943e",
+				"dweb:/ipfs/QmQrvTAdm9gsEHeFZYvJ3U1GDG4KL6JSk1w3o7uVFsYtTE"
 			]
 		}
 	},

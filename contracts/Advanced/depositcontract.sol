@@ -26,8 +26,4 @@ contract depositContract{
         return address(this).balance;
     }
 
-    function killContract()public onlyOwner{
-        selfdestruct(payable(msg.sender));
-    }
-
 }
