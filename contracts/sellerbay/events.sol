@@ -4,21 +4,21 @@ pragma solidity ^0.8.26;
 contract EventTicket {
     // Struct to define an Event
     struct Event {
-        uint256 eventId;        // Unique event ID
-        string name;            // Event name
-        string description;     // Short description of the event
-        uint256 date;           // Event date and time (UNIX timestamp)
-        string location;        // Event location
-        string imageURI;        // Arweave/IPFS URI for the event image
+        uint256 eventId;
+        string name;            
+        string description;     
+        uint256 date;           
+        string location;       
+        string imageURI;        
     }
 
-    // Mapping to store events
+    
     mapping(uint256 => Event) private eventdata;
 
-    // Counter for unique event IDs
+  
     uint256 private nextEventId;
 
-    // Event emitted when a new event is created
+   
     event EventCreated(
         uint256 indexed eventId,
         string name,
@@ -28,7 +28,7 @@ contract EventTicket {
         string imageURI
     );
 
-    // Function to create a new event
+  
     function createEvent(
         string memory _name,
         string memory _description,
