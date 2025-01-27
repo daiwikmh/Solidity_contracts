@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.26;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -18,9 +18,11 @@ contract EventTicket is ERC1155, Ownable {
     // Mapping to store events
     mapping(uint256 => Event) private events;
 
+    // Mapping to track the total supply of each token ID
+    mapping(uint256 => uint256) private tokenTotalSupply;
+
     // Counter for unique event IDs
     uint256 private nextEventId;
-   
 
     // Event emitted when a new event is created
     event EventCreated(
@@ -40,8 +42,9 @@ contract EventTicket is ERC1155, Ownable {
         uint256 quantity
     );
 
-    constructor() ERC1155("") {
-    }
+    constructor() ERC1155("") Ownable(msg.sender) {
+}
+
 
     // Function to create a new event
     function createEvent(
@@ -86,12 +89,15 @@ contract EventTicket is ERC1155, Ownable {
         // Mint the tickets (ERC1155 supports batch minting, but here it's per purchase)
         _mint(msg.sender, tokenId, _quantity, "");
 
+        // Update total supply for the token ID
+        tokenTotalSupply[tokenId] += _quantity;
+
         emit TicketPurchased(_eventId, msg.sender, tokenId, _quantity);
     }
 
     // Function to get the total tickets minted for an event
     function getTotalTicketsMinted(uint256 _eventId) public view returns (uint256) {
-        return totalSupply(_eventId);
+        return tokenTotalSupply[_eventId];
     }
 
     // Function to get event details by ID
