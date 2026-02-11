@@ -1,0 +1,68 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/FlashLoan/Escrow.sol": "IERC721"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/FlashLoan/Escrow.sol": {
+			"keccak256": "0x985308ab21f5225c4dc75b99532e60eda47fb9e50b0015ea0f5b7387092dc739",
+			"urls": [
+				"bzz-raw://1ff5f121b2e3c4bcbf54a2268f8fedd3375a3cb8645a228a2dbeefe9af97f4d4",
+				"dweb:/ipfs/QmdwozPnFC3MxBsf5jThhXMnpJSWRwupES5jauFsiqPJkJ"
+			]
+		}
+	},
+	"version": 1
+}
