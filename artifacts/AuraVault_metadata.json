@@ -1,0 +1,212 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_usdc",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_forwarder",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "encryptedRecipient",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ShieldedDeposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ShieldedPayout",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_encryptedRecipient",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "forwarder",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "report",
+						"type": "bytes"
+					}
+				],
+				"name": "onReport",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "usdc",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"ShieldedDeposit(address,bytes32,uint256)": {
+					"params": {
+						"amount": "USDC amount deposited (6-decimal units).",
+						"encryptedRecipient": "ECIES/AES-encrypted recipient address (32 bytes).",
+						"sender": "The depositor's address."
+					}
+				},
+				"ShieldedPayout(address,uint256)": {
+					"params": {
+						"amount": "USDC amount paid out.",
+						"recipient": "The decrypted recipient address."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"deposit(bytes32,uint256)": {
+					"details": "Caller must have approved this contract to spend `_amount` of USDC first.         The `_encryptedRecipient` should be the recipient address encrypted         with the DON's public key so only the TEE can decrypt it.",
+					"params": {
+						"_amount": "USDC amount to deposit.",
+						"_encryptedRecipient": "ECIES/AES-encrypted recipient (32 bytes)."
+					}
+				},
+				"onReport(bytes)": {
+					"details": "The forwarder verifies the DON report before calling this.         `report` is ABI-encoded as `(address recipient, uint256 amount)`.",
+					"params": {
+						"report": "ABI-encoded payout data from the CRE workflow."
+					}
+				}
+			},
+			"title": "AuraVault — Shielded Pay-by-Human",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ShieldedDeposit(address,bytes32,uint256)": {
+					"notice": "Emitted when a user makes a shielded deposit."
+				},
+				"ShieldedPayout(address,uint256)": {
+					"notice": "Emitted when the CRE workflow settles a payout."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"deposit(bytes32,uint256)": {
+					"notice": "Deposit USDC with an encrypted recipient address."
+				},
+				"forwarder()": {
+					"notice": "The Chainlink CRE forwarder that is allowed to call onReport."
+				},
+				"onReport(bytes)": {
+					"notice": "Called by the Chainlink CRE forwarder to settle a payout."
+				}
+			},
+			"notice": "Users deposit USDC with an encrypted recipient. The Chainlink CRE workflow         verifies humanity via World ID (in a TEE), decrypts the recipient, and         triggers a private payout through the CRE forwarder.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/token.sol": "AuraVault"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/token.sol": {
+			"keccak256": "0x19abad3a66af3f6dcaf929362409d057fd524e253a81819f51405a01d95491af",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://58b9c8c081c5aaa35df60e4851513ce73fa579232b886db0b8a4bb0feac47c16",
+				"dweb:/ipfs/QmWvfH98pwDdoFkF2WxR4LpEPhkjQQs2L4hquDsjhyF6t2"
+			]
+		}
+	},
+	"version": 1
+}
