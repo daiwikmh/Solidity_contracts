@@ -25,6 +25,20 @@ contract Shadow is CCIPReceiver, ReceiverTemplate {
         usdc = IERC20(_usdc);
     }
 
+    /**
+ * @dev Required by Solidity to resolve the conflict between CCIPReceiver and ReceiverTemplate.
+ * It ensures the contract correctly identifies that it supports both interfaces.
+ */
+function supportsInterface(bytes4 interfaceId)
+    public
+    view
+    virtual
+    override(CCIPReceiver, ReceiverTemplate)
+    returns (bool)
+{
+    return super.supportsInterface(interfaceId);
+}
+
     /// @notice Same-chain deposit
     function deposit(bytes32 _encryptedRecipient, uint256 _amount) external {
         require(_amount > 0, "Shadow: zero amount");

@@ -1,0 +1,799 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_usdc",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_forwarder",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_router",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "received",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "expected",
+						"type": "address"
+					}
+				],
+				"name": "InvalidAuthor",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidForwarderAddress",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "router",
+						"type": "address"
+					}
+				],
+				"name": "InvalidRouter",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "expected",
+						"type": "address"
+					}
+				],
+				"name": "InvalidSender",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "received",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "expected",
+						"type": "bytes32"
+					}
+				],
+				"name": "InvalidWorkflowId",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes10",
+						"name": "received",
+						"type": "bytes10"
+					},
+					{
+						"internalType": "bytes10",
+						"name": "expected",
+						"type": "bytes10"
+					}
+				],
+				"name": "InvalidWorkflowName",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "WorkflowNameRequiresAuthorValidation",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousAuthor",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newAuthor",
+						"type": "address"
+					}
+				],
+				"name": "ExpectedAuthorUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "previousId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "newId",
+						"type": "bytes32"
+					}
+				],
+				"name": "ExpectedWorkflowIdUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes10",
+						"name": "previousName",
+						"type": "bytes10"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes10",
+						"name": "newName",
+						"type": "bytes10"
+					}
+				],
+				"name": "ExpectedWorkflowNameUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousForwarder",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newForwarder",
+						"type": "address"
+					}
+				],
+				"name": "ForwarderAddressUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "SecurityWarning",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "encryptedRecipient",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ShieldedDeposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ShieldedPayout",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "messageId",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint64",
+								"name": "sourceChainSelector",
+								"type": "uint64"
+							},
+							{
+								"internalType": "bytes",
+								"name": "sender",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "data",
+								"type": "bytes"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "token",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Client.EVMTokenAmount[]",
+								"name": "destTokenAmounts",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct Client.Any2EVMMessage",
+						"name": "message",
+						"type": "tuple"
+					}
+				],
+				"name": "ccipReceive",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_encryptedRecipient",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getExpectedAuthor",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getExpectedWorkflowId",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getExpectedWorkflowName",
+				"outputs": [
+					{
+						"internalType": "bytes10",
+						"name": "",
+						"type": "bytes10"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getForwarderAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getRouter",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "metadata",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "report",
+						"type": "bytes"
+					}
+				],
+				"name": "onReport",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					}
+				],
+				"name": "setExpectedAuthor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_id",
+						"type": "bytes32"
+					}
+				],
+				"name": "setExpectedWorkflowId",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "setExpectedWorkflowName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_forwarder",
+						"type": "address"
+					}
+				],
+				"name": "setForwarderAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "usdc",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
+			"kind": "dev",
+			"methods": {
+				"ccipReceive((bytes32,uint64,bytes,bytes,(address,uint256)[]))": {
+					"details": "Note ensure you check the msg.sender is the OffRampRouter",
+					"params": {
+						"message": "CCIP Message"
+					}
+				},
+				"getExpectedAuthor()": {
+					"returns": {
+						"_0": "The expected author address (address(0) if not set)"
+					}
+				},
+				"getExpectedWorkflowId()": {
+					"returns": {
+						"_0": "The expected workflow ID (bytes32(0) if not set)"
+					}
+				},
+				"getExpectedWorkflowName()": {
+					"returns": {
+						"_0": "The expected workflow name (bytes10(0) if not set)"
+					}
+				},
+				"getForwarderAddress()": {
+					"returns": {
+						"_0": "The forwarder address (address(0) if disabled)"
+					}
+				},
+				"getRouter()": {
+					"returns": {
+						"_0": "CCIP router address"
+					}
+				},
+				"onReport(bytes,bytes)": {
+					"details": "Performs optional validation checks based on which permission fields are set",
+					"params": {
+						"metadata": "Report's metadata.",
+						"report": "Workflow report."
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"setExpectedAuthor(address)": {
+					"params": {
+						"_author": "The new expected author address (use address(0) to disable this check)"
+					}
+				},
+				"setExpectedWorkflowId(bytes32)": {
+					"params": {
+						"_id": "The new expected workflow ID (use bytes32(0) to disable this check)"
+					}
+				},
+				"setExpectedWorkflowName(string)": {
+					"details": "IMPORTANT: Workflow name validation REQUIRES author validation to be enabled.      The workflow name uses only 40-bit truncation, making collision attacks feasible      when used alone. However, since workflow names are unique per owner, validating      both the name AND the author address provides adequate security.      You must call setExpectedAuthor() before or after calling this function.      The name is hashed using SHA256 and truncated to bytes10.",
+					"params": {
+						"_name": "The workflow name as a string (use empty string \"\" to disable this check)"
+					}
+				},
+				"setForwarderAddress(address)": {
+					"details": "WARNING: Setting to address(0) disables forwarder validation.      This makes your contract INSECURE - anyone can call onReport() with arbitrary data.      Only use address(0) if you fully understand the security implications.",
+					"params": {
+						"_forwarder": "The new forwarder address"
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "Required by Solidity to resolve the conflict between CCIPReceiver and ReceiverTemplate. It ensures the contract correctly identifies that it supports both interfaces."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"title": "Shadow — Shielded Multi-Chain Pay-by-Human",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"ccipReceive((bytes32,uint64,bytes,bytes,(address,uint256)[]))": {
+					"notice": "Called by the Router to deliver a message. If this reverts, any token transfers also revert. The message will move to a FAILED state and become available for manual execution."
+				},
+				"deposit(bytes32,uint256)": {
+					"notice": "Same-chain deposit"
+				},
+				"getExpectedAuthor()": {
+					"notice": "Returns the expected workflow author address"
+				},
+				"getExpectedWorkflowId()": {
+					"notice": "Returns the expected workflow ID"
+				},
+				"getExpectedWorkflowName()": {
+					"notice": "Returns the expected workflow name"
+				},
+				"getForwarderAddress()": {
+					"notice": "Returns the configured forwarder address"
+				},
+				"getRouter()": {
+					"notice": "Return the current router"
+				},
+				"onReport(bytes,bytes)": {
+					"notice": "Handles incoming keystone reports."
+				},
+				"setExpectedAuthor(address)": {
+					"notice": "Updates the expected workflow owner address"
+				},
+				"setExpectedWorkflowId(bytes32)": {
+					"notice": "Updates the expected workflow ID"
+				},
+				"setExpectedWorkflowName(string)": {
+					"notice": "Updates the expected workflow name from a plaintext string"
+				},
+				"setForwarderAddress(address)": {
+					"notice": "Updates the forwarder address that is allowed to call onReport"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/token.sol": "Shadow"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol": {
+			"keccak256": "0x846fbf21ac7bc86c8e4aa0b3dc126126536cc414d3bb99c1fed747ce99f9f40c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://384d2d6f2a5056f43de589e9f2df1afa69afe7861871715ec371327cbc5684f9",
+				"dweb:/ipfs/QmZmpeH4sTwVdvfTGvfsthwEE4eTw7C3hvHfNFedLPfisp"
+			]
+		},
+		"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IAny2EVMMessageReceiver.sol": {
+			"keccak256": "0xd2a05a4f58a453cbf8cfa6aa78f58cb8e42091b3a025f711a0aa51f584e16b48",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e3bb4ca50612b0150a29b9ea7c82f6228914ff54716584541bad5c0259e8fa33",
+				"dweb:/ipfs/QmTnqhNtBD9bUmqVaR4YHkWrBUdSGHV3DXAgrTM193PGkH"
+			]
+		},
+		"@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol": {
+			"keccak256": "0xa1ce70adec733c80b230084b425a50caa852a99f17a7e43e38a96a975f11ce88",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08db3aa57ceae13832c1bf323aa29afa2620fd5b5205ff0d56152bf323c56256",
+				"dweb:/ipfs/QmUG2FSVP8xXVkdgFwNhc4YFDU7FNCaf1kKShiTaaHUddE"
+			]
+		},
+		"@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v5.0.2/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df",
+				"dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL"
+			]
+		},
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://df6f0c459663c9858b6cba2cda1d14a7d05a985bed6d2de72bd8e78c25ee79db",
+				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://971f954442df5c2ef5b5ebf1eb245d7105d9fbacc7386ee5c796df1d45b21617",
+				"dweb:/ipfs/QmadRjHbkicwqwwh61raUEapaVEtaLMcYbQZWs9gUkgj3u"
+			]
+		},
+		"contracts/IReceiver.sol": {
+			"keccak256": "0x013abe1178b1e46d348f845fdc2c9f673481bd24651008853d3641f8db9e8359",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8390d46bd0ed909942a18e85e3599d5a694806975595510e7affcba856501356",
+				"dweb:/ipfs/QmTWkHoX6as5MQXMsgwwmUcELVuVNhfLveT7Ck523kBi8K"
+			]
+		},
+		"contracts/ReceiverTemplate.sol": {
+			"keccak256": "0x50f82d2187b810159c92ec5169ae51a37a5a6c6c7eeebe9f6a155ad28fe205b1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://45314653e6fb9b991611fb40912a248b0b3b05f254c5243781db3e0026d5144d",
+				"dweb:/ipfs/QmbX8my639xXQSk9RVQCjbfBUERiEhgxHJSrgj6AwhoYgQ"
+			]
+		},
+		"contracts/token.sol": {
+			"keccak256": "0x6f223474e20bab6d1a599a8d3d592ac367fd5a5a2429b5b494a4fe79ce703b0d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a6869d91903a1f474f24009404ade6cfd5c9b6f87cbde7030fd1448eef8f19a1",
+				"dweb:/ipfs/QmVxPbXGVgM3RCkComQ5PZXz7QRikDHVrnNkk5Htp1GXiF"
+			]
+		}
+	},
+	"version": 1
+}

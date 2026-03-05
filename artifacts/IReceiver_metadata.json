@@ -1,0 +1,108 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "metadata",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "report",
+						"type": "bytes"
+					}
+				],
+				"name": "onReport",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"onReport(bytes,bytes)": {
+					"details": "If this function call reverts, it can be retried with a higher gas limit. The receiver is responsible for discarding stale reports.",
+					"params": {
+						"metadata": "Report's metadata.",
+						"report": "Workflow report."
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+				}
+			},
+			"title": "IReceiver - receives keystone reports",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"onReport(bytes,bytes)": {
+					"notice": "Handles incoming keystone reports."
+				}
+			},
+			"notice": "Implementations must support the IReceiver interface through ERC165.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IReceiver.sol": "IReceiver"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://971f954442df5c2ef5b5ebf1eb245d7105d9fbacc7386ee5c796df1d45b21617",
+				"dweb:/ipfs/QmadRjHbkicwqwwh61raUEapaVEtaLMcYbQZWs9gUkgj3u"
+			]
+		},
+		"contracts/IReceiver.sol": {
+			"keccak256": "0x013abe1178b1e46d348f845fdc2c9f673481bd24651008853d3641f8db9e8359",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8390d46bd0ed909942a18e85e3599d5a694806975595510e7affcba856501356",
+				"dweb:/ipfs/QmTWkHoX6as5MQXMsgwwmUcELVuVNhfLveT7Ck523kBi8K"
+			]
+		}
+	},
+	"version": 1
+}
