@@ -272,6 +272,31 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "encryptedOrder",
+						"type": "bytes"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "orderId",
+						"type": "bytes32"
+					}
+				],
+				"name": "ShieldedOrder",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "recipient",
 						"type": "address"
 					},
@@ -449,6 +474,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_encryptedOrder",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_orderId",
+						"type": "bytes32"
+					}
+				],
+				"name": "placeOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -674,6 +717,9 @@
 				"onReport(bytes,bytes)": {
 					"notice": "Handles incoming keystone reports."
 				},
+				"placeOrder(bytes,bytes32)": {
+					"notice": "Submit a shielded dark-pool order"
+				},
 				"setExpectedAuthor(address)": {
 					"notice": "Updates the expected workflow owner address"
 				},
@@ -787,11 +833,11 @@
 			]
 		},
 		"contracts/token.sol": {
-			"keccak256": "0x6f223474e20bab6d1a599a8d3d592ac367fd5a5a2429b5b494a4fe79ce703b0d",
+			"keccak256": "0x37bbedafbfef0c8c4a5c7b39934649a485891ef9b485320e0afda9fb842411b6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a6869d91903a1f474f24009404ade6cfd5c9b6f87cbde7030fd1448eef8f19a1",
-				"dweb:/ipfs/QmVxPbXGVgM3RCkComQ5PZXz7QRikDHVrnNkk5Htp1GXiF"
+				"bzz-raw://1f35c8fb4cadd2a11b48c2903cf101c6a882920dea5d1a719318cfa8412d93df",
+				"dweb:/ipfs/QmYjyJ9Jgk2j8k76K3BnKQB46u3SYQrKCiBnNZo7hhGMgX"
 			]
 		}
 	},
